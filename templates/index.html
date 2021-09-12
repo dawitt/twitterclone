@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}  {% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="row">
+    <div class="col">
+        <h3> {{request.user}}'s Profile</h3>
+        Followers
+        <P>Following </p>
+    </div>
+    <div class="col-9">
+    
+    {% for tweet in tweets %}
+    <b>{{tweet.author| capfirst}}</b> 
+    <a href="/profile/{{tweet.author.id}}">
+    @{{tweet.author}}</a><br />
+    {{tweet.body}}<br />
+    {{tweet.posted_at}}<br />
+    <hr>
+    {% endfor%}
+    </div>
+    </div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} {% endblock title %}
+{% block content %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Profile</h5>
+      <p class="card-text">@{{author.username}}<br />
+        
+            {% for post in tweet %}
+            <a href= "#">{{post.body}}</a><br />
+            {{post.posted_at}}<br />
+            <hr>
+            {% endfor %}
+    
+      </p>
+      <a href="/" class="btn btn-primary">Home</a>
+    </div>
+  </div>
+
+{% endblock %}

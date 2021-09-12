@@ -1,0 +1,10 @@
+<form action="" method="POST">
+    {%csrf_token %} 
+    <table class="table">
+    {{ form }}
+    <tr>
+        <td><input type="hidden" name="next" value="{{ next }}"></td>
+    </tr>
+</table>
+    <input type="submit" value="Login" />
+</form>
