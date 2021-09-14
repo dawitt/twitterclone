@@ -3,18 +3,32 @@
 {% block content %}
 <div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title">Profile</h5>
-      <p class="card-text">@{{author.username}}<br />
-        
+    <h5 class="card-title">Profile</h5>
+
+    <p class="card-text">@{{author.username}} </p>
+        <p>Followers: {{total_followers}}<br />
+            Tweets:{{tweet_numbers}}{{Tweet.tweet_body}}</p>
+        {% if author == request.user%}
+        {% else %}
+        {% if is_following %}
+            <form action="{%  url 'unfollow' author.id  %}" method= 'POST'> 
+            {%csrf_token%}
+            <button class="btn btn-primary" type="submit">Unfollow</button>
+            </form>
+        {% else %}
+            <form action="{%  url 'follower' author.id  %}" method= 'POST'> 
+            {%csrf_token%}
+            <button class="btn btn-primary" type="submit">Follow</button>
+            </form>
+        {%endif%}    
+        {%endif%}
+        <br /><br /> 
             {% for post in tweet %}
             <a href= "#">{{post.body}}</a><br />
             {{post.posted_at}}<br />
             <hr>
             {% endfor %}
-    
-      </p>
-      <a href="/" class="btn btn-primary">Home</a>
     </div>
-  </div>
+</div>
 
 {% endblock %}

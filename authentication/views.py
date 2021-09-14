@@ -30,7 +30,7 @@ def signup_view(request):
             data = form.cleaned_data
             user = TweeterUser.objects.create(
                 username = data['username'],
-                display_name = data['display_name'],
+                bio = data['bio'],
                 password = data['password']
             )
             return HttpResponseRedirect("/login/")

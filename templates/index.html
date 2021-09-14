@@ -3,23 +3,38 @@
 {% block content %}
 <div class="container">
     <div class="row">
-    <div class="col">
-        <h3> {{request.user}}'s Profile</h3>
-        Followers
-        <P>Following </p>
+    <div class="col-3">
+    <br />
+    <div class="card" style="width: 10rem;">
+    <div class="card-body">
+    <h5 class="card-title">@{{request.user}}</h5>
+    <p class="card-text">Bio: {{request.user.bio}}</p>
+    
+  </div>
+</div>
+    
     </div>
     <div class="col-9">
-    
+        <br />
+        <form action="" method="POST">
+            {%csrf_token %} 
+            {{ form }}
+            <input type="hidden" name="next" value="{{ next }}">
+            <br />
+            <input type="submit" value="POST" />
+        </form>
+        <br />
     {% for tweet in tweets %}
     <b>{{tweet.author| capfirst}}</b> 
     <a href="/profile/{{tweet.author.id}}">
     @{{tweet.author}}</a><br />
     {{tweet.body}}<br />
-    {{tweet.posted_at}}<br />
+    <a href="/tweet/{{tweet.id}}">{{tweet.posted_at}}</a><br />
     <hr>
     {% endfor%}
     </div>
     </div>
 </div>
+
 
 {% endblock%}

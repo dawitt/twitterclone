@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %} Tweet Detail {% endblock title %}
+{% block content %}
+<h4> Detail</h4>
+<a href="/profile/{{tweet.author.id}}/">@{{ tweet.author.username}}<br /></a>
+{{tweet.body}}<br />
+{{tweet.posted_at}}<br />
+<br />
+{%endblock%}

@@ -2,9 +2,9 @@
 {% block title %} Author form {% endblock title %}
 {% block content %}
 
-<div class="card text-center" style="width: 50%;">
+{% comment %} <div class="card text-center" style="width: 50%;">
     <div class="card-body">
-    <p class="card-text">
+    <p class="card-text"> {% endcomment %}
         <form action="" method="POST">
             <table class="table">
             {%csrf_token %} 
@@ -15,7 +15,7 @@
             </table>
             <input type="submit" value="Post" />
         </form>
-    </p>
+    {% comment %} </p>
     </div>
-</div>
+</div> {% endcomment %}
 {% endblock %}

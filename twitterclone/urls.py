@@ -18,14 +18,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 from authentication import views
-from twitteruser.views import index, profile
-from tweet.views import post_tweet
+from tweet.views import tweet_detail
+from twitteruser.views import index, profile, follower, unfollow
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
-    path('post', post_tweet, name="post"),
+    path('', index, name="home"),
     path('profile/<int:id>/', profile, name="profile"),
+    path('profile/<int:id>/follow/add/', follower, name="follower"), 
+    path('profile/<int:id>/follower/delete/', unfollow, name="unfollow"),  
+    path('tweet/<int:id>/', tweet_detail, name="tweet_detail"),     
     path('login/', views.login_view, name="login"),
     path('signup/', views.signup_view, name="signup"),
     path('logout/', views.logout_view, name="logout"),
