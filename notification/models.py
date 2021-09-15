@@ -7,3 +7,7 @@ class Notification(models.Model):
     notification = models.ForeignKey(Tweet, on_delete=models.CASCADE)
     is_seen = models.BooleanField(default=False)
     notifier = models.ForeignKey(TweeterUser, on_delete=models.CASCADE)
+
+    # def __str__(self):
+    #     return self.notifier
+    

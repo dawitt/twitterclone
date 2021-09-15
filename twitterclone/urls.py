@@ -20,7 +20,7 @@ from django.urls import path
 from authentication import views
 from tweet.views import tweet_detail
 from twitteruser.views import index, profile, follower, unfollow
-
+from notification.views import notification_view, delete_notification
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,7 +28,9 @@ urlpatterns = [
     path('profile/<int:id>/', profile, name="profile"),
     path('profile/<int:id>/follow/add/', follower, name="follower"), 
     path('profile/<int:id>/follower/delete/', unfollow, name="unfollow"),  
-    path('tweet/<int:id>/', tweet_detail, name="tweet_detail"),     
+    path('tweet/<int:id>/', tweet_detail, name="tweet_detail"),  
+    path('notification/', notification_view),  
+    path('notification/delete/<int:id>', delete_notification),
     path('login/', views.login_view, name="login"),
     path('signup/', views.signup_view, name="signup"),
     path('logout/', views.logout_view, name="logout"),

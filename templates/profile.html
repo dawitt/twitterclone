@@ -7,7 +7,7 @@
 
     <p class="card-text">@{{author.username}} </p>
         <p>Followers: {{total_followers}}<br />
-            Tweets:{{tweet_numbers}}{{Tweet.tweet_body}}</p>
+            Tweets:{{tweet_numbers}}</p>
         {% if author == request.user%}
         {% else %}
         {% if is_following %}

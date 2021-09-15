@@ -4,6 +4,7 @@ from tweet.models import Tweet
 from django.contrib.auth.decorators import login_required
 from tweet.forms import PostTweetForm
 import re
+from notification.models import Notification
 
 # Create your views here.
 @login_required
@@ -17,10 +18,16 @@ def index(request):
                 body =data['body'],
                 author = request.user
             )
-        
-            # if(Tweet.author.all() == re.findall(r"@\w+", data['body'])):
-            #     print( Tweet.author)
-            # print(re.findall(r"@\w+", data['body']) + "data['author']")
+            # print(TweeterUser.get_username.get())
+            to_whom = re.findall(r"@\w+", data['body'])
+            if re.findall(r"@\w+", data['body']):
+                to_whom = to_whom[0].strip("@")
+                to_whom = TweeterUser.objects.get(username=to_whom)
+                notif = Notification.objects.create(
+                    notification = tweet_body,
+                    notifier = to_whom
+                )
+                print(to_whom)
             return HttpResponseRedirect("/")
     form = PostTweetForm()
     return render(request, 'index.html', {'tweets': tweets, 'form': form, })
