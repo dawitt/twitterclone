@@ -10,5 +10,6 @@ def notification_view(request):
 
 def delete_notification(request, id):
     note = Notification.objects.get(id=id)
-    note.delete()
+    note.is_seen = True
+    note.save()
     return HttpResponseRedirect("/notification/")

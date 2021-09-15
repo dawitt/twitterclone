@@ -9,8 +9,8 @@
       {{note.notification}}<br />
       <a href="/notification/delete/{{note.id}}">close</a>
       <hr /> 
+      {% comment %} {{note.is_seen=True}} {% endcomment %}
   {%endfor%}
   </div>
 </div> 
-
 {%endblock%}
